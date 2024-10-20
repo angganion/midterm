@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Tambah Lokasi - UTS APAP 2024</title>
+    <object th:insert="~{fragments/fragment::css}" th:remove="tag"></object>
+    <object th:insert="~{fragments/fragment::js}" th:remove="tag"></object>
+</head>
+<body>
+<nav th:replace="~{fragments/fragment::navbar(lokasi-detail)}"></nav>
+
+<div class="container">
+    <div class="card m-4 p-4">
+        <div class="card-body">
+            <div class="justify-content-center">
+                <h2 class="mb-4">Detail Lokasi</h2>
+                <form th:action="@{/lokasi/add}" th:object="${lokasiModel}" method="POST">
+                    <div class="form-group row">
+                        <label for="lokasiId" class="col-4 col-form-label">Id Lokasi</label>
+                        <div class="col-8">
+                            <input class="form-control" th:field="*{lokasiId}" type="text" readonly/>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="namaLokasi" class="col-4 col-form-label">Nomor/Kode Lokasi</label>
+                        <div class="col-8">
+                            <input id="namaLokasi" th:field="*{namaLokasi}" placeholder="seperti Margonda Indah" type="text" class="form-control" required="required">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="alamat" class="col-4 col-form-label">Nama Lokasi</label>
+                        <div class="col-8">
+                            <input id="alamat" th:field="*{alamat}" placeholder="alamat lengkap" type="text" class="form-control" required="required">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="kota" class="col-4 col-form-label">Kota</label>
+                        <div class="col-8">
+                            <select id="kota" th:field="*{kota}" class="custom-select">
+                                <option th:each="option : ${listService.getKotaOptionsList()}"
+                                        th:value="${option}" th:text="${option}">
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="offset-4 col-2">
+                            <button name="save" type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                        <div class="col-2">
+                            <a class="btn btn-primary" href="/">Back</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="justify-content-center">
+                <h2 class="mb-4 mt-5">Daftar Kamar</h2>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Id Kamar</th>
+                        <th>Nomor Kamar</th>
+                        <th>Lantai</th>
+                        <th class="text-right">Harga Sewa</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+
+                <div class="justify-content-center">
+                    <h2 class="mb-4 mt-5">Tambah Kamar</h2>
+                    <form th:action="@{/kamar/add}" th:object="${kamarModel}" method="POST">
+                        <input class="form-control" type="hidden" th:field="*{kamarId}" readonly/>
+                        <input class="form-control" type="hidden" th:field="*{lokasiModel.lokasiId}" readonly/>
+
+                        <div class="form-group row">
+                            <label for="nomorKamar" class="col-4 col-form-label">Nomor kamar</label>
+                            <div class="col-8">
+                                <input id="nomorKamar" th:field="*{nomorKamar}" placeholder="nomor kamar" type="text" class="form-control" required="required">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="lantai" class="col-4 col-form-label">Lantai</label>
+                            <div class="col-8">
+                                <input id="lantai" th:field="*{lantai}" placeholder="lantai" type="text" class="form-control" required="required">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="hargaSewa" class="col-4 col-form-label">Harga sewa</label>
+                            <div class="col-8">
+                                <input id="hargaSewa" th:field="*{hargaSewa}" placeholder="dalam rupiah per bulan" type="number" class="form-control" required="required">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group row">
+                            <label for="status" class="col-4 col-form-label">Status</label>
+                            <div class="col-8">
+                                <select id="status" th:field="*{status}" class="custom-select">
+                                    <option th:each="option : ${listService.getStatusOptionsList()}"
+                                            th:value="${option}" th:text="${option}">
+                                    </option>
+                                </select>
+                            </div>
+                        </div>                        
+
+                        <div class="form-group row">
+                            <div class="offset-4 col-2">
+                                <button name="save" type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                            <div class="col-2">
+                                <a class="btn btn-primary" href="/">Back</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

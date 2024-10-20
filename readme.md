@@ -43,6 +43,11 @@ You can run the Spring Boot application using the Gradle `bootRun` task:
 This command will start the application on the default port specified in your `application.yml` file (port 8080).
 
 
+### 4. Populate Database for Testing
+
+You can use INSERT statements in file `sample.sql` to pre-populate tables for testing.
+
+
 ## Cleaning Up
 
 To clean the project and remove all the generated files, run:

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Status Kamar - UTS APAP 2024</title>
+    <object th:insert="~{fragments/fragment::css}" th:remove="tag"></object>
+    <object th:insert="~{fragments/fragment::js}" th:remove="tag"></object>
+</head>
+<body>
+<nav th:replace="~{fragments/fragment::navbar(kamar-update-status)}"></nav>
+
+<div class="container">
+    <div class="card m-4 p-4">
+        <div class="card-body">
+            <div class="justify-content-center">
+                <h2 class="mb-4">Update Status Masalah</h2>
+                <form th:action="@{/kamar/update}" th:object="${kamarModel}" method="POST">
+                    <input class="form-control" type="hidden" th:field="*{kamarId}" readonly/>
+
+                    <div class="form-group row">
+                        <label for="nomorKamar" class="col-4 col-form-label">nomorKamar</label>
+                        <div class="col-8">
+                            <input id="nomorKamar" th:field="*{nomorKamar}" placeholder="berikan laporan rinci" type="text" class="form-control" readonly>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="lantai" class="col-4 col-form-label">lantai</label>
+                        <div class="col-8">
+                            <input id="lantai" th:field="*{lantai}" placeholder="nama lengkap" type="text" class="form-control" readonly>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="hargaSewa" class="col-4 col-form-label">hargaSewa</label>
+                        <div class="col-8">
+                            <input id="hargaSewa" th:field="*{hargaSewa}" type="number" class="form-control" readonly>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="status" class="col-4 col-form-label">Status</label>
+                        <div class="col-8">
+                            <select id="status" th:field="*{status}" class="custom-select">
+                                <option th:each="option : ${listService.getStatusOptionsList()}"
+                                        th:value="${option}" th:text="${option}">
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="offset-4 col-2">
+                            <button name="save" type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                        <div class="col-2">
+                            <a class="btn btn-primary" href="/">Back</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

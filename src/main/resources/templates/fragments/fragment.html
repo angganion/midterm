@@ -21,7 +21,7 @@
 <body>
 <nav th:fragment="navbar(activeTab)" class="navbar navbar-expand-lg navbar-light bg-light mb-5">
     <a class="navbar-brand font-weight-bold text-primary" href="/">
-        UTS APAP 2024
+        SmartKos - UTS APAP 2024
     </a>
     <button class="navbar-toggler"
             type="button"
@@ -32,6 +32,41 @@
             aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav mr-auto">
+            <li th:class="${activeTab == 'home'} ? 'active' : ''">
+                <a class="nav-item nav-link" th:href="@{/}">
+                    Beranda<span class="sr-only">(current)</span></a>
+            </li>
+            <li th:class="${activeTab == 'lokasi-view-all'} ? 'active' : '' ">
+                <a class="nav-item nav-link" th:href="@{/lokasi/view-all}">
+                    Lihat Semua Lokasi<span class="sr-only"></span></a>
+            </li>
+            <li th:class="${activeTab == 'lokasi-add'} ? 'active' : '' ">
+                <a class="nav-item nav-link" th:href="@{/lokasi/add}">
+                    Tambah Lokasi<span class="sr-only"></span></a>
+            </li>
+            <li th:class="${activeTab == 'kamar-view-all'} ? 'active' : '' ">
+                <a class="nav-item nav-link" th:href="@{/kamar/view-all}">
+                    Lihat Semua Kamar<span class="sr-only"></span></a>
+            </li>
+            <li th:class="${activeTab == 'kamar-tersedia'} ? 'active' : '' ">
+                <a class="nav-item nav-link" th:href="@{/kamar/tersedia}">
+                    Lihat Kamar Tersedia<span class="sr-only"></span></a>
+            </li>
+            <li th:class="${activeTab == 'statistik'} ? 'active' : '' ">
+                <a class="nav-item nav-link" th:href="@{/report/statistics}">
+                    Statistik<span class="sr-only"></span></a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0" th:action="@{/lokasi/search}" method="get">
+            <input class="form-control mr-sm-2" type="search"
+                   name="name" placeholder="nama lokasi" aria-label="Cari Lokasi">
+            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">
+                Cari Lokasi
+            </button>
+        </form>
+    </div>
 </nav>
 </body>
 

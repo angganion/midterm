@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Tambah Lokasi - UTS APAP 2024</title>
+    <object th:insert="~{fragments/fragment::css}" th:remove="tag"></object>
+    <object th:insert="~{fragments/fragment::js}" th:remove="tag"></object>
+</head>
+<body>
+<nav th:replace="~{fragments/fragment::navbar(lokasi-add)}"></nav>
+
+<div class="container">
+    <div class="card m-4 p-4">
+        <div class="card-body">
+            <div class="justify-content-center">
+                <h2 class="mb-4">Tambah Lokasi</h2>
+                <form th:action="@{/lokasi/add}" th:object="${lokasiModel}" method="POST">
+                    <input class="form-control" type="hidden" th:field="*{lokasiId}" readonly/>
+
+                    <div class="form-group row">
+                        <label for="namaLokasi" class="col-4 col-form-label">Nama lokasi</label>
+                        <div class="col-8">
+                            <input id="namaLokasi" th:field="*{namaLokasi}" placeholder="seperti 'Wisma Margonda Indah'" type="text" class="form-control" required="required">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="alamat" class="col-4 col-form-label">Alamat</label>
+                        <div class="col-8">
+                            <input id="alamat" th:field="*{alamat}" placeholder="alamat" type="text" class="form-control" required="required">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="kota" class="col-4 col-form-label">Kota</label>
+                        <div class="col-8">
+                            <select id="kota" th:field="*{kota}" class="custom-select">
+                                <option th:each="option : ${listService.getKotaOptionsList()}"
+                                        th:value="${option}" th:text="${option}">
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="offset-4 col-2">
+                            <button name="save" type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                        <div class="col-2">
+                            <a class="btn btn-primary" href="/">Back</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

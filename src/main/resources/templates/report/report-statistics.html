@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Statistik - UTS APAP 2024</title>
+    <object th:insert="~{fragments/fragment :: css}" th:remove="tag"></object>
+    <object th:insert="~{fragments/fragment :: js}" th:remove="tag"></object>
+</head>
+<body>
+<nav th:replace="~{fragments/fragment :: navbar(statistik)}"></nav>
+
+<div class="container">
+
+    <h1 class="mt-4 py-4">Statistik per Lokasi</h1>
+
+    <table id="table_result" class="display" style="width:100%">
+        <thead>
+        <tr>
+            <th>Lokasi</th>
+            <th>Jumlah Kamar Disewakan</th>
+            <th>Jumlah Uang Sewa Per Bulan</th>
+            <th>Estimasi Uang Sewa Per Tahunan</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Data 1</td>
+            <td>Data 2</td>
+            <td>Data 3</td>
+            <td>Data 4</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <h1 class="mt-4 py-4">Kamar Tersedia</h1>
+
+    <table id="table_kamar" class="display" style="width:100%">
+        <thead>
+        <tr>
+            <th>Lokasi</th>
+            <th>Id Kamar</th>
+            <th>Nomor Kamar</th>
+            <th>Lantai</th>
+            <th>Harga Sewa</th>
+            <th>Status</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>    
+
+</div>
+
+
+</body>
+</html>
