@@ -1,0 +1,13 @@
+services:
+  db:
+    image: postgres:16.4-alpine
+    container_name: apap_db
+    ports:
+      - '15001:5432'
+    restart: 'no'
+    volumes:
+      - ./db:/var/lib/postgresql/data
+    env_file:
+      - app.env
+
+
