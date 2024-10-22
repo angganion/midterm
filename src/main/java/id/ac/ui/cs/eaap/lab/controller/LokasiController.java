@@ -28,11 +28,15 @@ public class LokasiController {
     @Autowired
     ListService listService;
 
+    @Autowired
+    LokasiService lokasiService;
+
 
     @GetMapping("/view-all")
     public String viewAllPage(Model model) {
         log.info("view all kamar");
         List<LokasiModel> lokasiModels = new ArrayList<>();
+        lokasiModels = lokasiService.findAll();
         model.addAttribute("lokasiList", lokasiModels);
         return "lokasi/view-all";
     }

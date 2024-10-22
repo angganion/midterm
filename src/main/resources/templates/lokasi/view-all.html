@@ -5,6 +5,8 @@
     <title>Lihat Semua Lokasi - UTS APAP 2024</title>
     <object th:insert="~{fragments/fragment::css}" th:remove="tag"></object>
     <object th:insert="~{fragments/fragment::js}" th:remove="tag"></object>
+    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
 </head>
 <body>
 <nav th:replace="~{fragments/fragment::navbar(lokasi-view-all)}"></nav>
@@ -14,7 +16,7 @@
     <div class="alert alert-primary" role="alert" th:text="${success}" th:if="${success}"></div>
     <div class="alert alert-danger" role="alert" th:text="${error}" th:if="${error}"></div>
 
-    <table class="table">
+    <table class="table" id="lokasiTable">
         <thead>
         <tr>
             <th>Id</th>
@@ -25,9 +27,24 @@
         </tr>
         </thead>
         <tbody>
+            <tr th:each="proyek : ${lokasiList}">
+                <td th:text="${proyek.lokasiId}"></td>
+                <td th:text="${proyek.namaLokasi}"></td>
+                <td th:text="${proyek.alamat}"></td>
+                <td th:text="${proyek.kota}"></td>
+            </tr>
         </tbody>
     </table>
 </div>
+<script>
+    $(document).ready(function() {
+        $('#lokasiTable').DataTable({
+            "paging": true,       
+            "searching": true,    
+            "ordering": true      
+        });
+    });
+</script>
 
 </body>
 </html>
