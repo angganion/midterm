@@ -1,6 +1,7 @@
 package id.ac.ui.cs.eaap.lab.service;
 
 
+import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,6 +43,10 @@ public class KamarService {
 
     public List<KamarModel> getTersedia(){
         return kamarDb.getTersedia();
+    }
+
+    public List<KamarModel> getDiSewakan(Long id){
+        return kamarDb.getSewa(id);
     }
     
 
