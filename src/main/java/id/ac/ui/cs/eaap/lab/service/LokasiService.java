@@ -31,5 +31,9 @@ public class LokasiService {
     public LokasiModel findById(Long a){
         return lokasiDb.findById2(a);
     }
+
+    public List<LokasiModel> getBySearch(String a){
+        return lokasiDb.search(a);
+    }
 }
 

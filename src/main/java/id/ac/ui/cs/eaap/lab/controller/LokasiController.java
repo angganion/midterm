@@ -101,8 +101,9 @@ public class LokasiController {
     @GetMapping("/search")
     public String searchByName(@RequestParam(name = "name") String name, Model model) {
         List<LokasiModel> lokasiModels = new ArrayList<>();
+        lokasiModels = lokasiService.getBySearch(name);
         model.addAttribute("lokasiList", lokasiModels);
-        return "error/404.html";
+        return "lokasi/view-all";
     }
 
 }
