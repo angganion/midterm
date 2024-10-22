@@ -61,7 +61,7 @@ public class LokasiController {
             return "redirect:/lokasi/add";
         }
 
-        // TODO
+        lokasiService.addLokasi(lokasiModel);
 
         redirectAttrs.addFlashAttribute("success",
                 String.format("Lokasi berhasil disimpan dengan id %d", lokasiModel.getLokasiId()));

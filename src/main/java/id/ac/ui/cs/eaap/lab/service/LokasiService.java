@@ -20,5 +20,11 @@ public class LokasiService {
     public List<LokasiModel> findAll() {
         return lokasiDb.findAll();
     }
+
+    public LokasiModel addLokasi(LokasiModel a) {
+
+        return lokasiDb.save(a);
+
+    }
 }
 
