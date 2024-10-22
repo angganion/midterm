@@ -81,7 +81,8 @@ public class KamarController {
     @GetMapping("/tersedia")
     public String viewKamarTersedia(Model model) {
         log.info("view kamar tersedia");
-
-        return "error/404.html";
+        List<KamarModel> a = kamarService.getTersedia();
+        model.addAttribute("listKamar", a);
+        return "kamar/view-all";
     }
 }

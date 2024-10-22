@@ -19,5 +19,8 @@ public interface KamarDb extends JpaRepository<KamarModel, Long> {
     @Query(value = "SELECT * FROM kamar WHERE kamar_id = :nik", nativeQuery = true)
     KamarModel findById2(Long nik);
 
+    @Query(value = "SELECT * FROM kamar WHERE status LIKE 'tersedia' ", nativeQuery = true)
+    List<KamarModel> getTersedia();
+
     
 }

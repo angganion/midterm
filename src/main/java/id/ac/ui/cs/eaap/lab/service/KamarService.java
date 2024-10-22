@@ -39,6 +39,10 @@ public class KamarService {
         return kamarDb.save(x);
 
     }
+
+    public List<KamarModel> getTersedia(){
+        return kamarDb.getTersedia();
+    }
     
 
 }
