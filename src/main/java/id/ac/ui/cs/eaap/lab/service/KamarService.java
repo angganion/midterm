@@ -18,7 +18,7 @@ public class KamarService {
     KamarDb kamarDb;
 
     public List<KamarModel> findAll() {
-        return new ArrayList<>();
+        return kamarDb.findAll();
     }
 
     public KamarModel addKamar(KamarModel a){

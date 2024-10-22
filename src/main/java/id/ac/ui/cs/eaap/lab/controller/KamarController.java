@@ -33,9 +33,10 @@ public class KamarController {
 
     @GetMapping("/view-all")
     public String viewAllKamar(Model model) {
-        // TODO
+        List<KamarModel> a = kamarService.findAll();
+        model.addAttribute("listKamar", a);
         log.info("view all kamar");
-        return "kamar/view-all";
+        return "kamar/view-all2";
     }
 
 
