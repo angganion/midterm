@@ -29,5 +29,16 @@ public class KamarService {
         return kamarDb.getLokasi(a);
     }
 
+    public KamarModel getKamarById(Long id){
+        return kamarDb.findById2(id);
+    }
+
+    public KamarModel updateStatus(KamarModel a){
+        KamarModel x = kamarDb.findById2(a.getKamarId());
+        x.setStatus(a.getStatus());
+        return kamarDb.save(x);
+
+    }
+
 }
 

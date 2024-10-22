@@ -56,7 +56,8 @@ public class KamarController {
 
     @GetMapping(value = "/{id}/update")
     public String updateStatus(@PathVariable Long id, Model model) {
-        // TODO
+        KamarModel a = kamarService.getKamarById(id);
+        model.addAttribute("kamarModel", a);
         model.addAttribute("listService", listService);
 
         return "kamar/form-update-status";
@@ -70,7 +71,7 @@ public class KamarController {
             return "redirect:/kamar/view-all";
         }
 
-        // TODO
+        kamarService.updateStatus(kamarModel);
 
         redirectAttrs.addFlashAttribute("success",
                 "Status berhasil di update");
