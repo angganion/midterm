@@ -32,6 +32,11 @@
                 <td th:text="${proyek.namaLokasi}"></td>
                 <td th:text="${proyek.alamat}"></td>
                 <td th:text="${proyek.kota}"></td>
+                <td>
+                    <a type="button" class="btn btn-md btn-primary"
+                        th:href="@{/doctor/{lokasiId}/view(lokasiId=${proyek.lokasiId})}">Detail
+                    </a>
+                </td>
             </tr>
         </tbody>
     </table>
