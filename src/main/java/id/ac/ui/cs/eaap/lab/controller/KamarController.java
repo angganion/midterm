@@ -17,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import id.ac.ui.cs.eaap.lab.model.KamarModel;
 import id.ac.ui.cs.eaap.lab.service.KamarService;
 import id.ac.ui.cs.eaap.lab.service.ListService;
+import id.ac.ui.cs.eaap.lab.service.LokasiService;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -24,12 +25,12 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/kamar")
 public class KamarController {
 
-    @Autowired
-    ListService listService;
-
-    @Autowired
-    KamarService kamarService;
-
+    private final ListService listService;
+    private final KamarService kamarService;
+    public KamarController(LokasiService lokasiService, ListService listService, KamarService kamarService) {
+        this.listService = listService;
+        this.kamarService = kamarService;
+    }
 
     @GetMapping("/view-all")
     public String viewAllKamar(Model model) {

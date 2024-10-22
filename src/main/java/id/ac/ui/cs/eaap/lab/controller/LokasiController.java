@@ -28,14 +28,16 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/lokasi")
 public class LokasiController {
 
-    @Autowired
-    ListService listService;
+   
 
-    @Autowired
-    LokasiService lokasiService;
-
-    @Autowired
-    KamarService kamarService;
+    private final LokasiService lokasiService;
+    private final ListService listService;
+    private final KamarService kamarService;
+    public LokasiController(LokasiService lokasiService, ListService listService, KamarService kamarService) {
+        this.lokasiService = lokasiService;
+        this.listService = listService;
+        this.kamarService = kamarService;
+    }
 
 
     @GetMapping("/view-all")
@@ -105,5 +107,7 @@ public class LokasiController {
         model.addAttribute("lokasiList", lokasiModels);
         return "lokasi/view-all";
     }
+
+
 
 }

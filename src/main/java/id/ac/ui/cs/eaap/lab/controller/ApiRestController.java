@@ -17,6 +17,7 @@ import id.ac.ui.cs.eaap.lab.model.KamarModel;
 import id.ac.ui.cs.eaap.lab.model.LokasiModel;
 import id.ac.ui.cs.eaap.lab.model.ResponseStat;
 import id.ac.ui.cs.eaap.lab.service.KamarService;
+import id.ac.ui.cs.eaap.lab.service.ListService;
 import id.ac.ui.cs.eaap.lab.service.LokasiService;
 import lombok.extern.slf4j.Slf4j;
 
@@ -25,11 +26,12 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping(value = "/api")
 public class ApiRestController {
 
-    @Autowired
-    LokasiService lokasiService;
-
-    @Autowired
-    KamarService kamarService;    
+    private final LokasiService lokasiService;
+    private final KamarService kamarService;
+    public ApiRestController(LokasiService lokasiService, KamarService kamarService) {
+        this.lokasiService = lokasiService;
+        this.kamarService = kamarService;
+    }  
 
 
     @GetMapping("/kamar/tersedia")
