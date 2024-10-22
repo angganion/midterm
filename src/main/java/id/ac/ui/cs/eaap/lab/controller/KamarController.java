@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import id.ac.ui.cs.eaap.lab.model.KamarModel;
+import id.ac.ui.cs.eaap.lab.service.KamarService;
 import id.ac.ui.cs.eaap.lab.service.ListService;
 import lombok.extern.slf4j.Slf4j;
 
@@ -25,6 +26,9 @@ public class KamarController {
 
     @Autowired
     ListService listService;
+
+    @Autowired
+    KamarService kamarService;
 
 
     @GetMapping("/view-all")
@@ -42,8 +46,7 @@ public class KamarController {
             redirectAttrs.addFlashAttribute("error", "The error occurred.");
             return "redirect:/kamar/view-all";
         }
-
-        // TODO
+        kamarService.addKamar(kamarModel);
 
         redirectAttrs.addFlashAttribute("success",
                 String.format("Kamar berhasil disimpan dengan id %d", kamarModel.getKamarId()));

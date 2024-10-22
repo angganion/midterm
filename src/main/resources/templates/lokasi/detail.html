@@ -72,6 +72,19 @@
                     </tr>
                     </thead>
                     <tbody>
+                        <tr th:each="proyek : ${listKamar}">
+                            <td th:text="${proyek.kamarId}"></td>
+                            <td th:text="${proyek.nomorKamar}"></td>
+                            <td th:text="${proyek.lantai}"></td>
+                            <td th:text="${proyek.hargaSewa}"></td>
+                            <td th:text="${proyek.status}"></td>
+                            <td>
+                                <a type="button" class="btn btn-md btn-primary"
+                                    th:href="@{/kamar/{lokasiId}/update(lokasiId=${proyek.kamarId})}">Update Status
+                                </a>
+                            </td>
+
+                        </tr>
                     </tbody>
                 </table>
 

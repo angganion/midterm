@@ -5,13 +5,16 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import id.ac.ui.cs.eaap.lab.model.KamarModel;
 import id.ac.ui.cs.eaap.lab.model.LokasiModel;
 
-@Repository
-public interface LokasiDb extends JpaRepository<LokasiModel, Long> {
+import java.util.List;
 
-    @Query(value = "SELECT * FROM lokasi WHERE lokasi_id = :nik", nativeQuery = true)
-    LokasiModel findById2(Long nik);
+@Repository
+public interface KamarDb extends JpaRepository<KamarModel, Long> {
+
+    @Query(value = "SELECT * FROM kamar WHERE kamar_lokasi_id = :nik", nativeQuery = true)
+    List<KamarModel> getLokasi(Long nik);
 
     
 }

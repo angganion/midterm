@@ -2,6 +2,7 @@ package id.ac.ui.cs.eaap.lab.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import id.ac.ui.cs.eaap.lab.model.KamarModel;
 import id.ac.ui.cs.eaap.lab.model.LokasiModel;
+import id.ac.ui.cs.eaap.lab.service.KamarService;
 import id.ac.ui.cs.eaap.lab.service.ListService;
 import id.ac.ui.cs.eaap.lab.service.LokasiService;
 import lombok.extern.slf4j.Slf4j;
@@ -30,6 +33,9 @@ public class LokasiController {
 
     @Autowired
     LokasiService lokasiService;
+
+    @Autowired
+    KamarService kamarService;
 
 
     @GetMapping("/view-all")
@@ -72,8 +78,18 @@ public class LokasiController {
     @GetMapping("/{id}/view")
     public String detail(@PathVariable Long id, Model model, RedirectAttributes redirectAttrs) {
         boolean present = false;
-
+        LokasiModel a = lokasiService.findById(id);
+        List<KamarModel> c = kamarService.getLokasi(id);
+        KamarModel b = new KamarModel();
+        present = true;
         if (present) {
+
+            b.setLokasiModel(a);
+            model.addAttribute("listKamar", c);
+            model.addAttribute("lokasiModel", a);
+            model.addAttribute("kamarModel", b);
+            model.addAttribute("listService", listService);
+
             return "lokasi/detail";
 
         } else {
